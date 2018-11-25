@@ -1,11 +1,11 @@
-org\sample\concurrencytests\SynchronizedCounterTest.class
 org\sample\counters\SynchronizedIntCounter.class
+org\sample\counters\concurrencytests\NonSynchronizedCounterTest_jcstress.class
+org\sample\counters\concurrencytests\SynchronizedCounterTest.class
+org\sample\counters\concurrencytests\NonSynchronizedCounterTest.class
 org\openjdk\jcstress\infra\results\I_Result_jcstress_c1.class
-org\sample\concurrencytests\SynchronizedCounterTest_jcstress.class
+org\sample\counters\concurrencytests\SynchronizedCounterTest_jcstress.class
 org\openjdk\jcstress\infra\results\I_Result_jcstress_c2.class
-org\sample\concurrencytests\NonSynchronizedCounterTest.class
 org\sample\counters\NonSynchronizedIntCounter.class
 META-INF\TestList
 org\sample\counters\Counter.class
 org\openjdk\jcstress\infra\results\I_Result_jcstress.class
-org\sample\concurrencytests\NonSynchronizedCounterTest_jcstress.class

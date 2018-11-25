@@ -1,5 +1,5 @@
-E:\test\jcstress_test\test\src\main\java\org\sample\counters\Counter.java
-E:\test\jcstress_test\test\src\main\java\org\sample\concurrencytests\SynchronizedCounterTest.java
-E:\test\jcstress_test\test\src\main\java\org\sample\concurrencytests\NonSynchronizedCounterTest.java
-E:\test\jcstress_test\test\src\main\java\org\sample\counters\NonSynchronizedIntCounter.java
-E:\test\jcstress_test\test\src\main\java\org\sample\counters\SynchronizedIntCounter.java
+E:\test\jcstress_test\counter_test_with_arbiter\src\main\java\org\sample\counters\SynchronizedIntCounter.java
+E:\test\jcstress_test\counter_test_with_arbiter\src\main\java\org\sample\counters\concurrencytests\NonSynchronizedCounterTest.java
+E:\test\jcstress_test\counter_test_with_arbiter\src\main\java\org\sample\counters\concurrencytests\SynchronizedCounterTest.java
+E:\test\jcstress_test\counter_test_with_arbiter\src\main\java\org\sample\counters\Counter.java
+E:\test\jcstress_test\counter_test_with_arbiter\src\main\java\org\sample\counters\NonSynchronizedIntCounter.java

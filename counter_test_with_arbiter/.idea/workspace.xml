@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ace0587-1a38-4303-8f29-dbef5ef5f69c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../counter_test_without_arbiter/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../counter_test_without_arbiter/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../counter_test_without_arbiter/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../counter_test_without_arbiter/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../counter_test_without_arbiter/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../counter_test_without_arbiter/src/main/java/org/sample/counters/Counter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../counter_test_without_arbiter/src/main/java/org/sample/counters/NonSynchronizedIntCounter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../counter_test_without_arbiter/src/main/java/org/sample/counters/SynchronizedIntCounter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../counter_test_without_arbiter/src/main/java/org/sample/counters/concurrencytests/NonSynchronizedCounterTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../counter_test_without_arbiter/src/main/java/org/sample/counters/concurrencytests/SynchronizedCounterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="1ace0587-1a38-4303-8f29-dbef5ef5f69c" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +83,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543177375260" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543177740996" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">

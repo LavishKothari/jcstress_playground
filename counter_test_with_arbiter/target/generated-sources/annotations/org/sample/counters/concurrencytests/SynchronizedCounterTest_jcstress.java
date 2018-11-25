@@ -1,4 +1,4 @@
-package org.sample.concurrencytests;
+package org.sample.counters.concurrencytests;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -15,15 +15,15 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Callable;
 import java.util.Collections;
 import java.util.List;
-import org.sample.concurrencytests.NonSynchronizedCounterTest;
+import org.sample.counters.concurrencytests.SynchronizedCounterTest;
 import org.openjdk.jcstress.infra.results.I_Result_jcstress;
 
-public class NonSynchronizedCounterTest_jcstress extends Runner<I_Result_jcstress> {
+public class SynchronizedCounterTest_jcstress extends Runner<I_Result_jcstress> {
 
-    volatile StateHolder<NonSynchronizedCounterTest, I_Result_jcstress> version;
+    volatile StateHolder<SynchronizedCounterTest, I_Result_jcstress> version;
 
-    public NonSynchronizedCounterTest_jcstress(TestConfig config, TestResultCollector collector, ExecutorService pool) {
-        super(config, collector, pool, "org.sample.concurrencytests.NonSynchronizedCounterTest");
+    public SynchronizedCounterTest_jcstress(TestConfig config, TestResultCollector collector, ExecutorService pool) {
+        super(config, collector, pool, "org.sample.counters.concurrencytests.SynchronizedCounterTest");
     }
 
     @Override
@@ -35,7 +35,7 @@ public class NonSynchronizedCounterTest_jcstress extends Runner<I_Result_jcstres
     }
 
     private void sanityCheck_API(Counter<I_Result_jcstress> counter) throws Throwable {
-        final NonSynchronizedCounterTest s = new NonSynchronizedCounterTest();
+        final SynchronizedCounterTest s = new SynchronizedCounterTest();
         final I_Result_jcstress r = new I_Result_jcstress();
         Collection<Future<?>> res = new ArrayList<>();
         res.add(pool.submit(() -> s.actor1()));
@@ -57,10 +57,10 @@ public class NonSynchronizedCounterTest_jcstress extends Runner<I_Result_jcstres
 
     private void sanityCheck_Footprints(Counter<I_Result_jcstress> counter) throws Throwable {
         config.adjustStrides(size -> {
-            version = new StateHolder<>(new NonSynchronizedCounterTest[size], new I_Result_jcstress[size], 2, config.spinLoopStyle);
+            version = new StateHolder<>(new SynchronizedCounterTest[size], new I_Result_jcstress[size], 2, config.spinLoopStyle);
             for (int c = 0; c < size; c++) {
                 I_Result_jcstress r = new I_Result_jcstress();
-                NonSynchronizedCounterTest s = new NonSynchronizedCounterTest();
+                SynchronizedCounterTest s = new SynchronizedCounterTest();
                 version.rs[c] = r;
                 version.ss[c] = s;
                 s.actor1();
@@ -73,7 +73,7 @@ public class NonSynchronizedCounterTest_jcstress extends Runner<I_Result_jcstres
 
     @Override
     public Counter<I_Result_jcstress> internalRun() {
-        version = new StateHolder<>(new NonSynchronizedCounterTest[0], new I_Result_jcstress[0], 2, config.spinLoopStyle);
+        version = new StateHolder<>(new SynchronizedCounterTest[0], new I_Result_jcstress[0], 2, config.spinLoopStyle);
 
         control.isStopped = false;
 
@@ -107,38 +107,38 @@ public class NonSynchronizedCounterTest_jcstress extends Runner<I_Result_jcstres
         return counter;
     }
 
-    public final void jcstress_consume(StateHolder<NonSynchronizedCounterTest, I_Result_jcstress> holder, Counter<I_Result_jcstress> cnt, int a, int actors) {
-        NonSynchronizedCounterTest[] ss = holder.ss;
+    public final void jcstress_consume(StateHolder<SynchronizedCounterTest, I_Result_jcstress> holder, Counter<I_Result_jcstress> cnt, int a, int actors) {
+        SynchronizedCounterTest[] ss = holder.ss;
         I_Result_jcstress[] rs = holder.rs;
         int len = ss.length;
         int left = a * len / actors;
         int right = (a + 1) * len / actors;
         for (int c = left; c < right; c++) {
             I_Result_jcstress r = rs[c];
-            NonSynchronizedCounterTest s = ss[c];
+            SynchronizedCounterTest s = ss[c];
             s.arbiter(r);
-            ss[c] = new NonSynchronizedCounterTest();
+            ss[c] = new SynchronizedCounterTest();
             cnt.record(r);
             r.r1 = 0;
         }
     }
 
-    public final void jcstress_updateHolder(StateHolder<NonSynchronizedCounterTest, I_Result_jcstress> holder) {
+    public final void jcstress_updateHolder(StateHolder<SynchronizedCounterTest, I_Result_jcstress> holder) {
         if (!holder.tryStartUpdate()) return;
-        NonSynchronizedCounterTest[] ss = holder.ss;
+        SynchronizedCounterTest[] ss = holder.ss;
         I_Result_jcstress[] rs = holder.rs;
         int len = ss.length;
 
         int newLen = holder.updateStride ? Math.max(config.minStride, Math.min(len * 2, config.maxStride)) : len;
 
-        NonSynchronizedCounterTest[] newS = ss;
+        SynchronizedCounterTest[] newS = ss;
         I_Result_jcstress[] newR = rs;
         if (newLen > len) {
             newS = Arrays.copyOf(ss, newLen);
             newR = Arrays.copyOf(rs, newLen);
             for (int c = len; c < newLen; c++) {
                 newR[c] = new I_Result_jcstress();
-                newS[c] = new NonSynchronizedCounterTest();
+                newS[c] = new SynchronizedCounterTest();
             }
          }
 
@@ -150,19 +150,19 @@ public class NonSynchronizedCounterTest_jcstress extends Runner<I_Result_jcstres
 
         Counter<I_Result_jcstress> counter = new Counter<>();
         while (true) {
-            StateHolder<NonSynchronizedCounterTest,I_Result_jcstress> holder = version;
+            StateHolder<SynchronizedCounterTest,I_Result_jcstress> holder = version;
             if (holder.stopped) {
                 return counter;
             }
 
-            NonSynchronizedCounterTest[] ss = holder.ss;
+            SynchronizedCounterTest[] ss = holder.ss;
             I_Result_jcstress[] rs = holder.rs;
             int size = ss.length;
 
             holder.preRun();
 
             for (int c = 0; c < size; c++) {
-                NonSynchronizedCounterTest s = ss[c];
+                SynchronizedCounterTest s = ss[c];
                 s.actor1();
             }
 
@@ -179,19 +179,19 @@ public class NonSynchronizedCounterTest_jcstress extends Runner<I_Result_jcstres
 
         Counter<I_Result_jcstress> counter = new Counter<>();
         while (true) {
-            StateHolder<NonSynchronizedCounterTest,I_Result_jcstress> holder = version;
+            StateHolder<SynchronizedCounterTest,I_Result_jcstress> holder = version;
             if (holder.stopped) {
                 return counter;
             }
 
-            NonSynchronizedCounterTest[] ss = holder.ss;
+            SynchronizedCounterTest[] ss = holder.ss;
             I_Result_jcstress[] rs = holder.rs;
             int size = ss.length;
 
             holder.preRun();
 
             for (int c = 0; c < size; c++) {
-                NonSynchronizedCounterTest s = ss[c];
+                SynchronizedCounterTest s = ss[c];
                 s.actor2();
             }
 
